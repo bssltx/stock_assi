@@ -17,8 +17,11 @@ class Stock:
         if(name!=self.name):
             raise Exception('stock name not match code!')
 
-    def get_hist_data(self):
-        self.df_hist_data = ts.get_hist_data(self.code)
+    def get_hist_data(self, start_date=None, end_date=None):
+        if(start_date and end_date):
+            self.df_hist_data = ts.get_hist_data(self.code, start=start_date, end=end_date)
+        else:
+            self.df_hist_data = ts.get_hist_data(self.code)
 
 
 
